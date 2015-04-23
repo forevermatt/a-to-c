@@ -14,8 +14,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('markdown_content')); ?>:</b>
-	<?php echo CHtml::encode($data->markdown_content); ?>
-	<br />
+    <pre><?php echo CHtml::encode($data->markdown_content); ?></pre>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('correct_option')); ?>:</b>
 	<?php echo CHtml::encode($data->correct_option); ?>
