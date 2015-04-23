@@ -1,6 +1,6 @@
 <?php
 
-$yii = dirname(__FILE__) . '/../../../../Projects/_Apps_/yii/framework/yii.php';
+$yii = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yii.php';
 $config = dirname(__FILE__) . '/../protected/config/main.php';
 
 // TODO: Remove the following lines when in production mode.
