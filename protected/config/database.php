@@ -2,14 +2,10 @@
 
 // This is the database connection configuration.
 return array(
-	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/a-to-c.db',
-    
-	// uncomment the following lines to use a MySQL database
-	/*
-	'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
-	'charset' => 'utf8',
-	*/
+	'connectionString' => 'mysql:host=localhost;dbname=a_to_c',
+    'emulatePrepare' => false,
+	'username' => 'a-to-c',
+	'password' => 'a-to-c',
+    'charset' => 'utf8',
+    'tablePrefix' => '',
 );
