@@ -1,14 +1,17 @@
 <?php
 
-// uncomment the following to define a path alias
+// Uncomment the following to define a path alias.
 // Yii::setPathOfAlias('local','path/to/local-folder');
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'My Web Application',
+    
     // preloading 'log' component
     'preload' => array('log'),
+    
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
@@ -22,6 +25,7 @@ return array(
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
     ),
+    
     // application components
     'components' => array(
         'user' => array(
@@ -37,6 +41,7 @@ return array(
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
+        
         // database settings are configured in database.php
         'db' => require(dirname(__FILE__) . '/database.php'),
         'errorHandler' => array(
