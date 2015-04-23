@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'markdown_content'); ?>
-		<?php echo $form->textField($model,'markdown_content',array('size'=>60,'maxlength'=>2000)); ?>
+		<?php echo $form->textArea($model,'markdown_content',array('style' => 'height: 200px; width: 100%;', 'maxlength'=>2000)); ?>
 		<?php echo $form->error($model,'markdown_content'); ?>
 	</div>
 
