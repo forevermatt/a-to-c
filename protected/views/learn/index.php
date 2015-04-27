@@ -1,8 +1,13 @@
 <?php
 /* @var $this LearnController */
-/* @var $question Question[] */
+/* @var $questions Question[] */
 
-$this->pageTitle = 'Questions';
+$this->pageTitle = 'Pick a Question';
+?>
+
+<h2>Which of these questions would you like to master?</h2>
+
+<?php
 
 // Show each question.
 foreach ($questions as $question) {
