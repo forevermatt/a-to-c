@@ -3,3 +3,4 @@ protected/data/
 vendor/
 protected/runtime/
 composer.phar
+public/assets/
