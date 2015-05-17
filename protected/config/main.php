@@ -36,6 +36,10 @@ return array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
+                'learn/question/<slug:[a-z-]+>/<exampleId:\d+>/<choice:[a-z]+>' => 'learn/question',
+                'learn/question/<slug:[a-z-]+>/<exampleId:\d+>' => 'learn/question',
+                'learn/question/<slug:[a-z-]+>' => 'learn/question',
+                'learn/question' => 'learn/question',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
@@ -69,5 +73,8 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
+        
+        // Path to question data.
+        'questionPath' => __DIR__ . '/../data/questions/',
     ),
 );

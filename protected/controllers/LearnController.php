@@ -2,37 +2,55 @@
 
 class LearnController extends Controller
 {
-	public $layout='//layouts/learning';
+    public $layout = '//layouts/learning';
     
-    public function actionIndex() {
-        
+    public function actionIndex()
+    {
         // Show the list of things to learn.
-        $questions = Question::model()->findAll();
+        $questions = Question::findAll(\Yii::app()->params['questionPath']);
         $this->render('index', array(
             'questions' => $questions,
         ));
     }
     
-    public function actionQuestion($id, $exampleId = null) {
-        
+    public function actionDone($slug)
+    {
         // Get the specified question.
-        $question = Question::model()->findByPk($id);
+        $question = Question::findBySlug(
+            $slug,
+            \Yii::app()->params['questionPath']
+        );
         
-        // If no example ID was specified, use the first example.
-        if ($exampleId === null) {
-            $example = Example::model()->findByAttributes(array(
-                'question_id' => $id,
-            ), array(
-                'order' => 'id',
+        $this->render('done', array(
+            'question' => $question,
+        ));
+    }
+    
+    public function actionQuestion($slug, $exampleId = 1, $choice = null)
+    {
+        // Get the specified question.
+        $question = Question::findBySlug(
+            $slug,
+            \Yii::app()->params['questionPath']
+        );
+        
+        // Get the selected example.
+        $example = $question->getExample($exampleId);
+        
+        // If there was no such example, send them to a "done" page.
+        if ($example === null) {
+            $this->redirect(array(
+                'learn/done',
+                'slug' => $slug,
             ));
-        } else {
-            $example = Example::model()->findByPk($exampleId);
         }
         
-        // Show that question and example.
+        // Show that question and example (and answer, if a choice has already
+        // been made).
         $this->render('question', array(
             'question' => $question,
             'example' => $example,
+            'choice' => $choice,
         ));
     }
 }

@@ -14,6 +14,6 @@ foreach ($questions as $question) {
     echo sprintf(
         '<div>%s <a href="%s">Learn</a></div>',
         CHtml::encode($question->text),
-        $this->createUrl('learn/question', array('id' => $question->id))
+        $this->createUrl('learn/question', array('slug' => $question->urlSlug))
     );
 }

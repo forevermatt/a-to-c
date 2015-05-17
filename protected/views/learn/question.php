@@ -2,40 +2,57 @@
 /* @var $this LearnController */
 /* @var $question Question */
 /* @var $example Example */
+/* @var $choice string */
 
 $this->pageTitle = 'Example';
 ?>
 
 <p>
     <b>Instructions:</b> Pick an answer.  If you have no idea, simply guess.
-    You'll find out whether your guess was correct.
+    You will find out whether your guess was correct.
 </p>
 
 <hr />
 
 <h2 id="question"><?php echo CHtml::encode($question->text); ?></h2>
 <div id="example-content">
-    <?php
-    $md = new CMarkdown();
-    echo $md->transform($example->markdown_content);
-    ?>
+    <?php echo $example->getContentAsHtml(); ?>
 </div>
-<div id="option-buttons">
+<?php if ($choice === null): ?>
+    <div id="option-buttons">
+        <?php
+        echo sprintf(
+            '<a href="%s">%s</a> <a href="%s">%s</a>',
+            $this->createUrl('', array(
+                'slug' => $question->urlSlug,
+                'exampleId' => $example->id,
+                'choice' => 'a',
+            )),
+            CHtml::encode($question->optionALabel),
+            $this->createUrl('', array(
+                'slug' => $question->urlSlug,
+                'exampleId' => $example->id,
+                'choice' => 'b',
+            )),
+            CHtml::encode($question->optionBLabel)
+        );
+        ?>
+    </div>
+<?php else: ?>
+    <p class="explanation">
+        <?php if ($example->answer == $choice): ?>
+            CORRECT
+        <?php else: ?>
+            Wrong
+        <?php endif; ?>
+    </p>
     <?php
     echo sprintf(
-        '<a href="%s">%s</a> <a href="%s">%s</a>',
+        '<a href="%s">Continue</a>',
         $this->createUrl('', array(
-            'id' => $question->id,
-            'exampleId' => $example->id,
-            'choice' => 'a',
-        )),
-        CHtml::encode($question->option_a_label),
-        $this->createUrl('', array(
-            'id' => $question->id,
-            'exampleId' => $example->id,
-            'choice' => 'b',
-        )),
-        CHtml::encode($question->option_b_label)
+            'slug' => $question->urlSlug,
+            'exampleId' => ($example->id + 1),
+        ))
     );
     ?>
-</div>
+<?php endif; ?>

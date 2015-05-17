@@ -1,14 +1,53 @@
 <?php
 
-class Question extends QuestionBase
+class Question
 {
-    /**
-     * Returns the static model of the specified AR class. Please note that you
-     * should have this exact method in all your CActiveRecord descendants!
-     * @param string $className active record class name.
-     * @return Position the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
+    protected $folderPath = null;
+    public $optionALabel = null;
+    public $optionBLabel = null;
+    public $text = null;
+    public $urlSlug = null;
+
+    public function __construct($folderPath)
+    {
+        // Record the (real) path for this question's data.
+        $this->folderPath = realpath($folderPath);
+        
+        // Record the folder name as the URL slug.
+        $this->urlSlug = basename($this->folderPath);
+        
+        // Read in the question's data.
+        $data = require($this->folderPath . '/data.php');
+        
+        // Record it in the appropriate fields.
+        $this->text = $data['text'];
+        $this->optionALabel = 'No';
+        $this->optionBLabel = 'Yes';
+    }
+    
+    public static function findAll($path)
+    {
+        // Get the real path from the given one.
+        $realPath = realpath($path);
+        
+        // Get a list of all of the Questions found there.
+        $questions = array();
+        $pathContents = glob($realPath . '/*');
+        foreach ($pathContents as $itemInFolder) {
+            if (is_dir($itemInFolder)) {
+                $questions[] = new Question($itemInFolder);
+            }
+        }
+        return $questions;
+    }
+    
+    public static function findBySlug($slug, $questionPath)
+    {
+        return new Question($questionPath . $slug);
+    }
+    
+    public function getExample($exampleId)
+    {
+        return Example::find($this->folderPath, $exampleId);
     }
 }
