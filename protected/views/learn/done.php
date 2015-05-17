@@ -5,10 +5,10 @@
 $this->pageTitle = 'Done';
 ?>
 
-<p>
+<div class="alert alert-success" role="alert">
     <b>You're done!</b> That was the last example we have for the question
     "<?php echo CHtml::encode($question->text); ?>".
-</p>
+</div>
 <p>
     <?php
     echo sprintf(

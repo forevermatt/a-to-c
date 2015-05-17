@@ -1,39 +1,24 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>A-to-C: Learn Quickly</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style type="text/css">
-            body {
-                font-family: sans-serif;
-                text-align: center;
-            }
-            
-            #question {
-            }
-            
-            #example-content {
-                background-color: #f7f7f7;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                box-sizing: border-box;
-                font-size: larger;
-                margin: 20px auto;
-                max-width: 960px;
-                padding: 20px;
-                text-align: left;
-                width: 90%;
-            }
-            
-            #option-buttons > button {
-                font-size: 16px;
-                margin: 10px;
-                padding: 10px;
-            }
-        </style>
-    </head>
-    <body>
-    	<?php echo $content; ?>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A-to-C: Learn Quickly</title>
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/learn.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container text-center">
+      <?php echo $content; ?>
+    </div>
+  </body>
 </html>

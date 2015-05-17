@@ -12,7 +12,7 @@ $this->pageTitle = 'Pick a Question';
 // Show each question.
 foreach ($questions as $question) {
     echo sprintf(
-        '<div>%s <a href="%s">Learn</a></div>',
+        '<div>%s <a href="%s" class="btn btn-default">Learn</a></div>',
         CHtml::encode($question->text),
         $this->createUrl('learn/question', array('slug' => $question->urlSlug))
     );
