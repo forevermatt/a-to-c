@@ -30,6 +30,14 @@ class Question
         // Get the real path from the given one.
         $realPath = realpath($path);
         
+        // Make sure it actually exists.
+        if ($realPath === false) {
+            throw new \Exception(
+                'Invalid path (does it exist?): ' . $path,
+                1432127024
+            );
+        }
+        
         // Get a list of all of the Questions found there.
         $questions = array();
         $pathContents = glob($realPath . '/*');
