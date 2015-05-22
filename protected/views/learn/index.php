@@ -7,6 +7,7 @@ $this->pageTitle = 'Pick a Question';
 
 <h2>Which of these questions would you like to master?</h2>
 
+<div class="text-left" style="display: inline-block;">
 <?php
 
 // Show each question.
@@ -17,3 +18,6 @@ foreach ($questions as $question) {
         $this->createUrl('learn/question', array('slug' => $question->urlSlug))
     );
 }
+
+?>
+</div>
