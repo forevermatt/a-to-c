@@ -36,9 +36,9 @@ return array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                'learn/question/<slug:[a-z-]+>/<exampleId:\d+>/<choice:[a-z]+>' => 'learn/question',
-                'learn/question/<slug:[a-z-]+>/<exampleId:\d+>' => 'learn/question',
-                'learn/question/<slug:[a-z-]+>' => 'learn/question',
+                'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>/<choice:[a-z]+>' => 'learn/<action>',
+                'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>' => 'learn/<action>',
+                'learn/<action:\w+>/<slug:[a-z-]+>' => 'learn/<action>',
                 'learn/question' => 'learn/question',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
