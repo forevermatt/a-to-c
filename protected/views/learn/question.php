@@ -20,22 +20,17 @@ $this->pageTitle = 'Example';
 <?php if ($choice === null): ?>
     <div id="option-buttons" class="row">
         <?php
-        echo sprintf(
-            '<a href="%s" class="btn btn-default">%s</a> '
-            . '<a href="%s" class="btn btn-default">%s</a>',
-            $this->createUrl('', array(
-                'slug' => $question->urlSlug,
-                'exampleId' => $example->id,
-                'choice' => 'a',
-            )),
-            CHtml::encode($question->optionALabel),
-            $this->createUrl('', array(
-                'slug' => $question->urlSlug,
-                'exampleId' => $example->id,
-                'choice' => 'b',
-            )),
-            CHtml::encode($question->optionBLabel)
-        );
+        foreach ($question->options as $optionCode => $optionText) {
+            echo sprintf(
+                '<a href="%s" class="btn btn-default">%s</a> ',
+                $this->createUrl('', array(
+                    'slug' => $question->urlSlug,
+                    'exampleId' => $example->id,
+                    'choice' => $optionCode,
+                )),
+                CHtml::encode($optionText)
+            );
+        }
         ?>
     </div>
 <?php else: ?>

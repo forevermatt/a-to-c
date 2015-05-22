@@ -3,8 +3,7 @@
 class Question
 {
     protected $folderPath = null;
-    public $optionALabel = null;
-    public $optionBLabel = null;
+    public $options = null;
     public $text = null;
     public $urlSlug = null;
 
@@ -21,8 +20,7 @@ class Question
         
         // Record it in the appropriate fields.
         $this->text = $data['text'];
-        $this->optionALabel = 'No';
-        $this->optionBLabel = 'Yes';
+        $this->options = $data['options'];
     }
     
     public static function findAll($path)
