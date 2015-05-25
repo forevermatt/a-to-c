@@ -34,15 +34,16 @@ single example.
     }
 
 
-*Example 1*
-```some-question/1.json```:
+*Example 1*  
+```some-question/1.json```:  
 
     {
         "type": "markdown",
         "answer": "no"
     }
 
-```some-question/1.md```:
+
+```some-question/1.md```:  
 
     One two three  
     Four Five  
@@ -50,11 +51,12 @@ single example.
 
 
 *Example 2*
-```some-question/2.json```:
+```some-question/2.json```:  
 
     {
         "type": "image",
         "answer": "no"
     }
+
 
 ```some-question/2.jpg```: (an example image)
