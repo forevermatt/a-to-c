@@ -17,34 +17,44 @@ from other repositories, assembled by the community.
 Currently, the example data is structured as a folder (whose name consists of 
 lowercase letters and hyphens, which will also be used as the URL slug) for a 
 particular question the user will become able to answer, along with 
-sequentially numbered PHP files (starting with "1.php"), each with data for a 
+sequentially numbered JSON files (starting with "1.json"), each with data for a 
 single example.
 
 
 ### Samples ###
 
-*Question (some-question/data.php)*
+*Question (some-question/data.json)*
 
-    <?php
-    return array(
-        'text' => 'Is this a valid Haiku?',
-        'options' => array(
-            'no' => 'No',
-            'yes' => 'Yes',
-        ),
-    );
+    {
+        "text": "Is this a valid Haiku?",
+        "options": {
+            "no": "No",
+            "yes": "Yes"
+        )
+    }
 
 
-*Example (some-question/1.php)*
+*Example 1*
+```some-question/1.json```:
 
-    <?php
-    $markdownContent = <<<'EOT'
-    One two three
-    Four Five
+    {
+        "type": "markdown",
+        "answer": "no"
+    }
+
+```some-question/1.md```:
+
+    One two three  
+    Four Five  
     Six Seven Eight Nine.
-    EOT;
-    return array(
-        'type' => 'markdown',
-        'content' => $markdownContent,
-        'answer' => 'no',
-    );
+
+
+*Example 2*
+```some-question/2.json```:
+
+    {
+        "type": "image",
+        "answer": "no"
+    }
+
+```some-question/2.jpg```: (an example image)
