@@ -36,7 +36,7 @@ return array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>/<choice:[a-z]+>' => 'learn/<action>',
+                'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>/<choice:[a-z-]+>' => 'learn/<action>',
                 'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>' => 'learn/<action>',
                 'learn/<action:\w+>/<slug:[a-z-]+>' => 'learn/<action>',
                 'learn/question' => 'learn/question',
