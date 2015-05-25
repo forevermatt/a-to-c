@@ -16,11 +16,21 @@ class Question
         $this->urlSlug = basename($this->folderPath);
         
         // Read in the question's data.
-        $data = require($this->folderPath . '/data.php');
+        $data = $this->getQuestionData();
         
         // Record it in the appropriate fields.
         $this->text = $data['text'];
         $this->options = $data['options'];
+    }
+    
+    public function getQuestionData()
+    {
+        // Read in the data from the JSON file.
+        $json = file_get_contents($this->folderPath . '/data.json');
+        $data = json_decode($json, true);
+        
+        // Return the resulting data.
+        return $data;
     }
     
     public static function findAll($path)
