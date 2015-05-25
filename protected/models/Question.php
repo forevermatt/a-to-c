@@ -64,6 +64,6 @@ class Question
     
     public function getExample($exampleId)
     {
-        return Example::find($this->folderPath, $exampleId);
+        return Example::find($this->folderPath, $exampleId, $this);
     }
 }

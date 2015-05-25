@@ -11,7 +11,10 @@ class MarkdownExample extends Example
         
         // Convert the Markdown content to HTML and return it.
         $md = new CMarkdown();
-        return $md->transform($this->content);
+        return sprintf(
+            '<div class="text-left" style="display: inline-block;">%s</div>',
+            $md->transform($this->content)
+        );
     }
     
     public function getContentFromFile()

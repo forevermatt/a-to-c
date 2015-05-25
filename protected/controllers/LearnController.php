@@ -13,6 +13,33 @@ class LearnController extends Controller
         ));
     }
     
+    public function actionAsset($slug, $exampleId)
+    {
+        // Get the specified question.
+        $question = Question::findBySlug(
+            $slug,
+            \Yii::app()->params['questionPath']
+        );
+        
+        // Get the selected example.
+        $example = $question->getExample($exampleId);
+        
+        // If there was no such example, indicate that.
+        if ($example === null) {
+            throw new \CHttpException(
+                404,
+                sprintf('No such asset found ("%s", %s)', $slug, $exampleId),
+                1432561087
+            );
+        }
+        
+        // Return that asset as though it had simply been requested from the
+        // webserver.
+        $this->renderPartial('asset', array(
+            'example' => $example,
+        ));
+    }
+    
     public function actionDone($slug)
     {
         // Get the specified question.

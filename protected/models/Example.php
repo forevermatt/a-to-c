@@ -2,6 +2,7 @@
 
 class Example
 {
+    const TYPE_IMAGE = 'image';
     const TYPE_MARKDOWN = 'markdown';
     
     public $answer = null;
@@ -10,14 +11,22 @@ class Example
     public $type = null;
     
     protected $folder = null;
+    protected $question = null;
          
-    public function __construct($id, $content, $answer, $type, $folder)
-    {
+    public function __construct(
+        $id,
+        $content,
+        $answer,
+        $type,
+        $folder,
+        \Question $question = null
+    ) {
         $this->id = $id;
         $this->content = $content;
         $this->answer = $answer;
         $this->type = $type;
         $this->folder = realpath($folder);
+        $this->question = $question;
         
         if ($this->folder === false) {
             throw new \Exception(
@@ -32,7 +41,10 @@ class Example
     
     public function getContentAsHtml()
     {
-        return CHtml::encode($this->content);
+        return sprintf(
+            '<div class="text-left" style="display: inline-block;">%s</div>',
+            CHtml::encode($this->content)
+        );
     }
     
     public static function getRealDataFilePath($folder, $id)
@@ -45,7 +57,7 @@ class Example
         return file_exists(self::getRealDataFilePath($folder, $id));
     }
     
-    public static function find($folder, $id)
+    public static function find($folder, $id, \Question $question)
     {
         if ( ! self::exampleDataFileExists($folder, $id)) {
             return null;
@@ -57,10 +69,33 @@ class Example
         $answer = isset($data['answer']) ? $data['answer'] : null;
         $type = isset($data['type']) ? $data['type'] : null;
         
-        if ($type === Example::TYPE_MARKDOWN) {
-            return new MarkdownExample($id, $content, $answer, $type, $folder);
+        if ($type === Example::TYPE_IMAGE) {
+            return new ImageExample(
+                $id,
+                $content,
+                $answer,
+                $type,
+                $folder,
+                $question
+            );
+        } elseif ($type === Example::TYPE_MARKDOWN) {
+            return new MarkdownExample(
+                $id,
+                $content,
+                $answer,
+                $type,
+                $folder,
+                $question
+            );
         } elseif ($type === null) {
-            return new Example($id, $content, $answer, $type, $folder);
+            return new Example(
+                $id,
+                $content,
+                $answer,
+                $type,
+                $folder,
+                $question
+            );
         } else {
             throw new Exception(
                 sprintf(
