@@ -68,6 +68,7 @@ class Example
         $content = isset($data['content']) ? $data['content'] : null;
         $answer = isset($data['answer']) ? $data['answer'] : null;
         $type = isset($data['type']) ? $data['type'] : null;
+        $attributionHtml = isset($data['attributionHtml']) ? $data['attributionHtml'] : null;
         
         if ($type === Example::TYPE_IMAGE) {
             return new ImageExample(
@@ -76,7 +77,8 @@ class Example
                 $answer,
                 $type,
                 $folder,
-                $question
+                $question,
+                $attributionHtml
             );
         } elseif ($type === Example::TYPE_MARKDOWN) {
             return new MarkdownExample(

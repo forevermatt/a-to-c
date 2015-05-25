@@ -5,3 +5,7 @@ body {
 #option-buttons > .btn {
     margin: auto 1em;
 }
+
+#attribution {
+    font-size: smaller;
+}
