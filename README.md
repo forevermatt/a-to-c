@@ -24,39 +24,38 @@ single example.
 ### Samples ###
 
 *Question (some-question/data.json)*
-
-    {
-        "text": "Is this a valid Haiku?",
-        "options": {
-            "no": "No",
-            "yes": "Yes"
-        )
-    }
-
-
-*Example 1*  
-```some-question/1.json```:  
-
-    {
-        "type": "markdown",
-        "answer": "no"
-    }
+```
+{
+    "text": "Is this a valid Haiku?",
+    "options": {
+        "no": "No",
+        "yes": "Yes"
+    )
+}
+```
 
 
-```some-question/1.md```:  
+*Example 1  (some-question/1.json)*  
+```
+{
+    "type": "markdown",
+    "answer": "no"
+}
+```
 
-    One two three  
-    Four Five  
-    Six Seven Eight Nine.
+*Example 1 content file (some-question/1.md)*  
+```
+One two three  
+Four Five  
+Six Seven Eight Nine.
+```
 
+*Example 2* (some-question/2.json)*  
+```
+{
+    "type": "image",
+    "answer": "no"
+}
+```
 
-*Example 2*
-```some-question/2.json```:  
-
-    {
-        "type": "image",
-        "answer": "no"
-    }
-
-
-```some-question/2.jpg```: (an example image)
+*Example 2 (some-question/2.jpg)* (an example image in the same folder)
