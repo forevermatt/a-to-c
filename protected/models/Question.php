@@ -51,7 +51,9 @@ class Question
         $pathContents = glob($realPath . '/*');
         foreach ($pathContents as $itemInFolder) {
             if (is_dir($itemInFolder)) {
-                $questions[] = new Question($itemInFolder);
+                if (file_exists($itemInFolder . '/data.json')) {
+                    $questions[] = new Question($itemInFolder);
+                }
             }
         }
         return $questions;
