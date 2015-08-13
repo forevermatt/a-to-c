@@ -40,6 +40,7 @@ return array(
                 'learn/<action:\w+>/<slug:[a-z-]+>/<exampleId:\d+>' => 'learn/<action>',
                 'learn/<action:\w+>/<slug:[a-z-]+>' => 'learn/<action>',
                 'learn/question' => 'learn/question',
+                'teach/<action:\w+>/<slug:[a-z-]+>' => 'teach/<action>',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
